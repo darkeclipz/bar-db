@@ -4,7 +4,7 @@ Time series of low resolution charts can quickly consume a large amount of stora
 The goal of BarDB is to store market data structured as OHLCV candles as efficiently as possible. 
 This document aims to explain an implemenation of a database that is optimized to solve this specific problem.
 
-To keep in mind if we should, instead of being to busy trying to figure out if we could, it is important to compare this solution against other implementations with a relational database and a schemaless database.
+To keep in mind if we should, instead of being too busy trying to figure out if we could, it is important to compare this solution against other implementations with a relational database and a schemaless database.
 
 ## Binary storage format
 
@@ -58,6 +58,8 @@ The time which a bar represents doesn't need to be stored next to the bar itself
 ### File size
 
 Using 20 bytes for each candle, the following table can be constructed. A year of minute candles consumes 10.02Mb of storage.
+
+<p>
  
 |        | candles | bytes (bars) | kilobytes (bars) | megabytes (bars) |
 | ------ | ------- | ------------ | ---------------- | ---------------- |
@@ -68,10 +70,12 @@ Using 20 bytes for each candle, the following table can be constructed. A year o
 | hour   | 8760    | 175200       | 171.09375        | 0.16708374       |
 | minute | 525600  | 10512000     | 10265.625        | 10.02502441      |
 
-## Candle Query Language (CQL)
+</p>
 
-The interface with CandleDB is specified with the Candle Query Language (CQL).
-This query language is a subset of SQL, but adapted to the needs of CandleDB.
+## Bar Query Language (BQL)
+
+The interface with BarDB is specified with the Bar Query Language (BQL).
+This query language is a subset of SQL, but adapted to the needs of BarDB.
 
 ### Creating a symbol
 
